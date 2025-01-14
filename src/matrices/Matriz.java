@@ -46,7 +46,7 @@ public class Matriz {
             } 
         } 
         return matrizResultante; 
-    }
+    } 
 
     public static Matriz multiplicarDosMatrices(Matriz a, Matriz b) throws DimensionesIncompatibles {
         if (a.getDimension().width != b.getDimension().height) {
@@ -63,6 +63,20 @@ public class Matriz {
                 for (int k = 0; k < columnasA; k++) {
                     matrizResultante.datos[j][i] += a.datos[k][i] * b.datos[j][k];
                 }
+            }
+        }
+
+        return matrizResultante;
+    }
+
+    public static Matriz trasponerMatriz(Matriz a) {
+        int filasA = a.getDimension().height;
+        int columnasA = a.getDimension().width;
+        Matriz matrizResultante = new Matriz(columnasA, filasA, false);
+
+        for (int i = 0; i < columnasA; i++) {
+            for (int j = 0; j < filasA; j++) {
+                matrizResultante.datos[i][j] = a.datos[j][i];
             }
         }
 
